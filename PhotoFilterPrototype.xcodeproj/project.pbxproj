@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		482F73931A647775002A8537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73921A647775002A8537 /* AppDelegate.swift */; };
 		482F73951A647775002A8537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73941A647775002A8537 /* ViewController.swift */; };
-		482F73981A647775002A8537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482F73961A647775002A8537 /* Main.storyboard */; };
 		482F739A1A647775002A8537 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482F73991A647775002A8537 /* Images.xcassets */; };
 		482F739D1A647775002A8537 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482F739B1A647775002A8537 /* LaunchScreen.xib */; };
 		482F73A91A647775002A8537 /* PhotoFilterPrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */; };
@@ -30,7 +29,6 @@
 		482F73911A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482F73941A647775002A8537 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		482F73971A647775002A8537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		482F73991A647775002A8537 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		482F739C1A647775002A8537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		482F73A21A647775002A8537 /* PhotoFilterPrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFilterPrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +77,6 @@
 			children = (
 				482F73921A647775002A8537 /* AppDelegate.swift */,
 				482F73941A647775002A8537 /* ViewController.swift */,
-				482F73961A647775002A8537 /* Main.storyboard */,
 				482F73991A647775002A8537 /* Images.xcassets */,
 				482F739B1A647775002A8537 /* LaunchScreen.xib */,
 				482F73901A647775002A8537 /* Supporting Files */,
@@ -192,7 +189,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482F73981A647775002A8537 /* Main.storyboard in Resources */,
 				482F739D1A647775002A8537 /* LaunchScreen.xib in Resources */,
 				482F739A1A647775002A8537 /* Images.xcassets in Resources */,
 			);
@@ -236,14 +232,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		482F73961A647775002A8537 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				482F73971A647775002A8537 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		482F739B1A647775002A8537 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
