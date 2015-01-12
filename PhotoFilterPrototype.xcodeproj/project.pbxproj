@@ -21,6 +21,7 @@
 		482F73C11A648119002A8537 /* photo3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BA1A648119002A8537 /* photo3.jpeg */; };
 		482F73C21A648119002A8537 /* photo2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BB1A648119002A8537 /* photo2.jpeg */; };
 		482F73C31A648119002A8537 /* photo1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BC1A648119002A8537 /* photo1.jpeg */; };
+		482F73C51A648693002A8537 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73C41A648693002A8537 /* GalleryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		482F73BA1A648119002A8537 /* photo3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo3.jpeg; sourceTree = "<group>"; };
 		482F73BB1A648119002A8537 /* photo2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo2.jpeg; sourceTree = "<group>"; };
 		482F73BC1A648119002A8537 /* photo1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo1.jpeg; sourceTree = "<group>"; };
+		482F73C41A648693002A8537 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				482F73921A647775002A8537 /* AppDelegate.swift */,
 				482F73941A647775002A8537 /* ViewController.swift */,
 				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
+				482F73C41A648693002A8537 /* GalleryCell.swift */,
 				482F73991A647775002A8537 /* Images.xcassets */,
 				482F739B1A647775002A8537 /* LaunchScreen.xib */,
 				482F73901A647775002A8537 /* Supporting Files */,
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482F73C51A648693002A8537 /* GalleryCell.swift in Sources */,
 				482F73B51A647E36002A8537 /* GalleryViewController.swift in Sources */,
 				482F73951A647775002A8537 /* ViewController.swift in Sources */,
 				482F73931A647775002A8537 /* AppDelegate.swift in Sources */,
