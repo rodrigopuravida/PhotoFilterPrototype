@@ -9,6 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  
+  override func loadView() {
+    let rootView = UIView(frame: UIScreen.mainScreen().bounds)
+    rootView.backgroundColor = UIColor.whiteColor()
+    
+    
+    
+    
+    
+    
+    self.view = rootView
+    
+    
+    
+    
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
