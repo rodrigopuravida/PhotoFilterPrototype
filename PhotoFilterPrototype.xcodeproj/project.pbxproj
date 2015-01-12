@@ -13,6 +13,7 @@
 		482F739D1A647775002A8537 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 482F739B1A647775002A8537 /* LaunchScreen.xib */; };
 		482F73A91A647775002A8537 /* PhotoFilterPrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */; };
 		482F73B31A647876002A8537 /* Tasks in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B21A647876002A8537 /* Tasks */; };
+		482F73B51A647E36002A8537 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73B41A647E36002A8537 /* GalleryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,8 @@
 		482F73A21A647775002A8537 /* PhotoFilterPrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFilterPrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73A71A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterPrototypeTests.swift; sourceTree = "<group>"; };
-		482F73B21A647876002A8537 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tasks; sourceTree = "<group>"; };
+		482F73B21A647876002A8537 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tasks; path = PhotoFilterPrototype/Tasks; sourceTree = "<group>"; };
+		482F73B41A647E36002A8537 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		482F73841A647775002A8537 = {
 			isa = PBXGroup;
 			children = (
+				482F73B21A647876002A8537 /* Tasks */,
 				482F738F1A647775002A8537 /* PhotoFilterPrototype */,
 				482F73A51A647775002A8537 /* PhotoFilterPrototypeTests */,
 				482F738E1A647775002A8537 /* Products */,
@@ -78,8 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				482F73921A647775002A8537 /* AppDelegate.swift */,
-				482F73B21A647876002A8537 /* Tasks */,
 				482F73941A647775002A8537 /* ViewController.swift */,
+				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
 				482F73991A647775002A8537 /* Images.xcassets */,
 				482F739B1A647775002A8537 /* LaunchScreen.xib */,
 				482F73901A647775002A8537 /* Supporting Files */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482F73B51A647E36002A8537 /* GalleryViewController.swift in Sources */,
 				482F73951A647775002A8537 /* ViewController.swift in Sources */,
 				482F73931A647775002A8537 /* AppDelegate.swift in Sources */,
 			);
