@@ -14,6 +14,13 @@
 		482F73A91A647775002A8537 /* PhotoFilterPrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */; };
 		482F73B31A647876002A8537 /* Tasks in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B21A647876002A8537 /* Tasks */; };
 		482F73B51A647E36002A8537 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73B41A647E36002A8537 /* GalleryViewController.swift */; };
+		482F73BD1A648119002A8537 /* IntroImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B61A648119002A8537 /* IntroImage.jpeg */; };
+		482F73BE1A648119002A8537 /* photo6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B71A648119002A8537 /* photo6.jpeg */; };
+		482F73BF1A648119002A8537 /* photo5.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B81A648119002A8537 /* photo5.jpeg */; };
+		482F73C01A648119002A8537 /* photo4.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73B91A648119002A8537 /* photo4.jpeg */; };
+		482F73C11A648119002A8537 /* photo3.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BA1A648119002A8537 /* photo3.jpeg */; };
+		482F73C21A648119002A8537 /* photo2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BB1A648119002A8537 /* photo2.jpeg */; };
+		482F73C31A648119002A8537 /* photo1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BC1A648119002A8537 /* photo1.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +45,13 @@
 		482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterPrototypeTests.swift; sourceTree = "<group>"; };
 		482F73B21A647876002A8537 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tasks; path = PhotoFilterPrototype/Tasks; sourceTree = "<group>"; };
 		482F73B41A647E36002A8537 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		482F73B61A648119002A8537 /* IntroImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IntroImage.jpeg; sourceTree = "<group>"; };
+		482F73B71A648119002A8537 /* photo6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo6.jpeg; sourceTree = "<group>"; };
+		482F73B81A648119002A8537 /* photo5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo5.jpeg; sourceTree = "<group>"; };
+		482F73B91A648119002A8537 /* photo4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo4.jpeg; sourceTree = "<group>"; };
+		482F73BA1A648119002A8537 /* photo3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo3.jpeg; sourceTree = "<group>"; };
+		482F73BB1A648119002A8537 /* photo2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo2.jpeg; sourceTree = "<group>"; };
+		482F73BC1A648119002A8537 /* photo1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo1.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +94,13 @@
 		482F738F1A647775002A8537 /* PhotoFilterPrototype */ = {
 			isa = PBXGroup;
 			children = (
+				482F73B61A648119002A8537 /* IntroImage.jpeg */,
+				482F73B71A648119002A8537 /* photo6.jpeg */,
+				482F73B81A648119002A8537 /* photo5.jpeg */,
+				482F73B91A648119002A8537 /* photo4.jpeg */,
+				482F73BA1A648119002A8537 /* photo3.jpeg */,
+				482F73BB1A648119002A8537 /* photo2.jpeg */,
+				482F73BC1A648119002A8537 /* photo1.jpeg */,
 				482F73921A647775002A8537 /* AppDelegate.swift */,
 				482F73941A647775002A8537 /* ViewController.swift */,
 				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
@@ -195,8 +216,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				482F73C21A648119002A8537 /* photo2.jpeg in Resources */,
+				482F73BF1A648119002A8537 /* photo5.jpeg in Resources */,
+				482F73C31A648119002A8537 /* photo1.jpeg in Resources */,
+				482F73C01A648119002A8537 /* photo4.jpeg in Resources */,
 				482F73B31A647876002A8537 /* Tasks in Resources */,
 				482F739D1A647775002A8537 /* LaunchScreen.xib in Resources */,
+				482F73C11A648119002A8537 /* photo3.jpeg in Resources */,
+				482F73BE1A648119002A8537 /* photo6.jpeg in Resources */,
+				482F73BD1A648119002A8537 /* IntroImage.jpeg in Resources */,
 				482F739A1A647775002A8537 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
 
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
@@ -21,8 +21,11 @@ class ViewController: UIViewController {
     photoButton.setTitle("My Photos", forState: .Normal)
     photoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+    
     let views = ["photoButton" : photoButton]
     self.setupConstraintsOnRootView(rootView, forViews: views)
+    
+    rootView.backgroundColor = UIColor(patternImage: UIImage(named: "IntroImage.jpeg")!)
 
     self.view = rootView
   }
@@ -36,7 +39,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let galleryOption = UIAlertAction(title: "Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
+    let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
       let galleryVC = GalleryViewController()
       self.navigationController?.pushViewController(galleryVC, animated: true)
