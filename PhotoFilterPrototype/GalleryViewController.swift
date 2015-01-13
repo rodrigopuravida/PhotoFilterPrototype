@@ -35,8 +35,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
 //      var test = "photo\(i).jpeg"
 //      println(test)
 //      
-//      imageArray[i] = "photo\(i).jpeg"
-//      self.images.append(UIImage(named: imageArray[i])!)
+//      
+//      //self.images.append(UIImage(named: imageArray[i])!)
 //      
 //    }
     

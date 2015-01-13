@@ -11,10 +11,14 @@ import UIKit
 class ViewController: UIViewController {
   
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  let mainImageView = UIImageView()
 
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
+    rootView.addSubview(self.mainImageView)
+    self.mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    self.mainImageView.backgroundColor = UIColor.yellowColor()
     let photoButton = UIButton()
     photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     rootView.addSubview(photoButton)
@@ -22,10 +26,10 @@ class ViewController: UIViewController {
     photoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     
-    let views = ["photoButton" : photoButton]
+    let views = ["photoButton" : photoButton, "mainImageView" : self.mainImageView]
     self.setupConstraintsOnRootView(rootView, forViews: views)
     
-    rootView.backgroundColor = UIColor(patternImage: UIImage(named: "IntroImage.jpeg")!)
+    //rootView.backgroundColor = UIColor(patternImage: UIImage(named: "IntroImage.jpeg")!)
 
     self.view = rootView
   }
@@ -66,6 +70,12 @@ class ViewController: UIViewController {
     let photoButton = views["photoButton"] as UIView!
     let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
     rootView.addConstraint(photoButtonConstraintHorizontal)
+    let mainImageViewConstraintHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[mainImageView]-|", options: nil, metrics: nil, views: views)
+    rootView.addConstraints(mainImageViewConstraintHorizontal)
+    let mainImageViewConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:|-72-[mainImageView]-[photoButton]", options: nil, metrics: nil, views: views)
+    rootView.addConstraints(mainImageViewConstraintVertical)
+   
+
   }
 
 
