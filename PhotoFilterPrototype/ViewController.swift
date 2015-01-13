@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ImageSelectedProtocol {
   
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
   let mainImageView = UIImageView()
+  let collectionView : UICollectionView!
+  let collectionViewyConstraint : NSLayoutConstraint!
+  
 
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
@@ -26,6 +29,10 @@ class ViewController: UIViewController {
     photoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     
+    //This is new code to look at from Tueesday class
+    let collectionViewFlowLayout = UICollectionViewFlowLayout()
+    //self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionViewFlowLayout)
+
     let views = ["photoButton" : photoButton, "mainImageView" : self.mainImageView]
     self.setupConstraintsOnRootView(rootView, forViews: views)
     
@@ -33,6 +40,16 @@ class ViewController: UIViewController {
 
     self.view = rootView
   }
+  
+  
+  
+  //MARK: ImageSelectedDelegate
+  func controllerDidSelectImage(image: UIImage) {
+    println("image selected")
+    self.mainImageView.image = image
+    //self.collectionView.reloadData()
+  }
+  
   
   //MARK: Button Selectors
   
@@ -46,6 +63,7 @@ class ViewController: UIViewController {
     let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
       let galleryVC = GalleryViewController()
+      galleryVC.delegate = self
       self.navigationController?.pushViewController(galleryVC, animated: true)
     }
     
@@ -57,6 +75,15 @@ class ViewController: UIViewController {
         self.alertController.addAction(galleryOptionCancel)
     
   }
+  
+  //MARK: Image selected delegate
+//  func controllerDidSelectImage(image: UIImage) {
+//    println("Image selected")
+//    self.mainImageView.image = image
+//    self.collectionView.reloadData()
+//  
+//  }
+  
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
