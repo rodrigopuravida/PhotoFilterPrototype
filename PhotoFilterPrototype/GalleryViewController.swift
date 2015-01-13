@@ -80,13 +80,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     self.delegate?.controllerDidSelectImage(self.images[indexPath.row])
     self.navigationController?.popViewControllerAnimated(true)
     
-    
   }
-  
-  
 
-  
-  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()

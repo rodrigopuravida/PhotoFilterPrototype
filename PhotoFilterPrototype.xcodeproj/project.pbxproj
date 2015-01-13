@@ -22,6 +22,7 @@
 		482F73C21A648119002A8537 /* photo2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BB1A648119002A8537 /* photo2.jpeg */; };
 		482F73C31A648119002A8537 /* photo1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 482F73BC1A648119002A8537 /* photo1.jpeg */; };
 		482F73C51A648693002A8537 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73C41A648693002A8537 /* GalleryCell.swift */; };
+		4898E2201A65E31400A4262D /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4898E21F1A65E31400A4262D /* Thumbnail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		482F73BB1A648119002A8537 /* photo2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo2.jpeg; sourceTree = "<group>"; };
 		482F73BC1A648119002A8537 /* photo1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo1.jpeg; sourceTree = "<group>"; };
 		482F73C41A648693002A8537 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		4898E21F1A65E31400A4262D /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				482F73BC1A648119002A8537 /* photo1.jpeg */,
 				482F73921A647775002A8537 /* AppDelegate.swift */,
 				482F73941A647775002A8537 /* ViewController.swift */,
+				4898E21F1A65E31400A4262D /* Thumbnail.swift */,
 				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
 				482F73C41A648693002A8537 /* GalleryCell.swift */,
 				482F73991A647775002A8537 /* Images.xcassets */,
@@ -249,6 +252,7 @@
 				482F73C51A648693002A8537 /* GalleryCell.swift in Sources */,
 				482F73B51A647E36002A8537 /* GalleryViewController.swift in Sources */,
 				482F73951A647775002A8537 /* ViewController.swift in Sources */,
+				4898E2201A65E31400A4262D /* Thumbnail.swift in Sources */,
 				482F73931A647775002A8537 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +437,7 @@
 				482F73AE1A647775002A8537 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		482F73AF1A647775002A8537 /* Build configuration list for PBXNativeTarget "PhotoFilterPrototypeTests" */ = {
 			isa = XCConfigurationList;
@@ -441,6 +446,7 @@
 				482F73B11A647775002A8537 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

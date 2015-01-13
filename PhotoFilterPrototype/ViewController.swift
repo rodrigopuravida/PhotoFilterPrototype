@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController, ImageSelectedProtocol {
+class ViewController: UIViewController, ImageSelectedProtocol, UICollectionViewDataSource {
   
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
   let mainImageView = UIImageView()
   let collectionView : UICollectionView!
   let collectionViewyConstraint : NSLayoutConstraint!
+  //var originaThumbnail : UIimage!
+  var filterNames = [String]()
+
+  
   
 
   override func loadView() {
@@ -41,6 +45,25 @@ class ViewController: UIViewController, ImageSelectedProtocol {
     self.view = rootView
   }
   
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
+      println("gallery pressed")
+      let galleryVC = GalleryViewController()
+      galleryVC.delegate = self
+      self.navigationController?.pushViewController(galleryVC, animated: true)
+    }
+    
+    let galleryOptionCancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+      println("Cancel pressed")
+    }
+    
+    self.alertController.addAction(galleryOption)
+    self.alertController.addAction(galleryOptionCancel)
+    
+  }
+  
   
   
   //MARK: ImageSelectedDelegate
@@ -56,25 +79,17 @@ class ViewController: UIViewController, ImageSelectedProtocol {
   func photoButtonPressed(sender : UIButton) {
     self.presentViewController(self.alertController, animated: true, completion: nil)
   }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
-      println("gallery pressed")
-      let galleryVC = GalleryViewController()
-      galleryVC.delegate = self
-      self.navigationController?.pushViewController(galleryVC, animated: true)
-    }
-    
-    let galleryOptionCancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
-      println("Cancel pressed")
-    }
-    
-        self.alertController.addAction(galleryOption)
-        self.alertController.addAction(galleryOptionCancel)
-    
+  
+  func generateThumbnail(originalImage: UIImage) {
+   
   }
+  
+  //MARK: UICollectionViewDataSource
+  func func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return 6
+  }
+
+  
   
   //MARK: Image selected delegate
 //  func controllerDidSelectImage(image: UIImage) {
