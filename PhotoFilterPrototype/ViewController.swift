@@ -44,7 +44,8 @@ class ViewController: UIViewController {
       let galleryVC = GalleryViewController()
       self.navigationController?.pushViewController(galleryVC, animated: true)
     }
-    self.alertController.addAction(galleryOption)  }
+    self.alertController.addAction(galleryOption)  
+  }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -53,7 +54,7 @@ class ViewController: UIViewController {
   
   //MARK: Autolayout Constraints
   func setupConstraintsOnRootView(rootView : UIView, forViews views : [String : AnyObject]) {
-    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-20-|", options: nil, metrics: nil, views: views)
+    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-30-|", options: nil, metrics: nil, views: views)
     rootView.addConstraints(photoButtonConstraintVertical)
     let photoButton = views["photoButton"] as UIView!
     let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)

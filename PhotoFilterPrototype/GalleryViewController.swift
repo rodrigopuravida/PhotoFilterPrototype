@@ -13,8 +13,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
   var collectionView : UICollectionView!
   var images = [UIImage]()
   var imageArray = [String]()
-  
-  
+ 
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -31,12 +30,16 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource {
     self.view.backgroundColor = UIColor.whiteColor()
     self.collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "GALLERY_CELL")
     
-//    for index in 1...6 {
+//    for var i = 1; i <= 6; i++ {
 //      
-//      imageArray[index] = "photo\(index)"
-//      self.images.append(UIImage(named: imageArray[index])!)
+//      var test = "photo\(i).jpeg"
+//      println(test)
+//      
+//      imageArray[i] = "photo\(i).jpeg"
+//      self.images.append(UIImage(named: imageArray[i])!)
 //      
 //    }
+    
     let image1 = UIImage(named: "photo1.jpeg")
     let image2 = UIImage(named: "photo2.jpeg")
     let image3 = UIImage(named: "photo3.jpeg")
