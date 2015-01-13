@@ -44,7 +44,14 @@ class ViewController: UIViewController {
       let galleryVC = GalleryViewController()
       self.navigationController?.pushViewController(galleryVC, animated: true)
     }
-    self.alertController.addAction(galleryOption)  
+    
+    let galleryOptionCancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+      println("Cancel pressed")
+    }
+    
+        self.alertController.addAction(galleryOption)
+        self.alertController.addAction(galleryOptionCancel)
+    
   }
 
   override func didReceiveMemoryWarning() {
