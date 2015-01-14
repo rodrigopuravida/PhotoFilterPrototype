@@ -22,7 +22,7 @@ class Thumbnail {
     self.gpuContext = context
   }
   
-  func generateFilteredImage {
+  func generateFilteredImage() {
     let startImage = CIImage(image: self.originalImage)
     let filter = CIFilter(name: self.filterName)
     filter.setDefaults()
