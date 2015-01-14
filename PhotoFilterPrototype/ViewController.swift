@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource {
+class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
   let mainImageView = UIImageView()
   var collectionView : UICollectionView!
@@ -80,6 +80,18 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       })
     }
     
+    if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+      let cameraOption = UIAlertAction(title: "Select Camera", style: .Default, handler: { (action) -> Void in
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
+      })
+      self.alertController.addAction(cameraOption)
+    }
+    
     self.navigationItem.rightBarButtonItem = doneButtonViewController
 
     
@@ -116,6 +128,19 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       thumbnail.filteredImage = nil
     }
     self.collectionView.reloadData()
+  }
+  
+  
+  //MARK: UIImagePickerController
+  
+  func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    let image = info[UIImagePickerControllerEditedImage] as? UIImage
+    self.controllerDidSelectImage(image!)
+    picker.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+    picker.dismissViewControllerAnimated(true, completion: nil)
   }
   
   //MARK: Button Selectors
