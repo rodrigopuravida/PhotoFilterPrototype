@@ -16,8 +16,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   
   var collectionView : UICollectionView!
   var images = [UIImage]()
-  var imageArray = [String]()
   var delegate : ImageSelectedProtocol!
+  var photoPic = String()
  
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
@@ -36,29 +36,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     self.view.backgroundColor = UIColor.whiteColor()
     self.collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "GALLERY_CELL")
     
-//    for var i = 1; i <= 6; i++ {
-//      
-//      var test = "photo\(i).jpeg"
-//      println(test)
-//      
-//      
-//      //self.images.append(UIImage(named: imageArray[i])!)
-//      
-//    }
+    //iterating over range of pictures
+    for var i = 1; i <= 6; i++ {
+      
+      self.photoPic = "photo\(i).jpeg"
+
+      self.images.append(UIImage(named: photoPic)!)
+      
+    }
     
-    let image1 = UIImage(named: "photo1.jpeg")
-    let image2 = UIImage(named: "photo2.jpeg")
-    let image3 = UIImage(named: "photo3.jpeg")
-    let image4 = UIImage(named: "photo4.jpeg")
-    let image5 = UIImage(named: "photo5.jpeg")
-    let image6 = UIImage(named: "photo6.jpeg")
-    self.images.append(image1!)
-    self.images.append(image2!)
-    self.images.append(image3!)
-    self.images.append(image4!)
-    self.images.append(image5!)
-    self.images.append(image6!)
-    // Do any additional setup after loading the view.
   }
   
   //MARK: UICollectionViewDataSource

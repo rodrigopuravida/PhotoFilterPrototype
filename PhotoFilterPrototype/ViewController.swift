@@ -52,6 +52,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
     let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
       let galleryVC = GalleryViewController()
@@ -79,7 +80,6 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.gpuContext = CIContext(EAGLContext: eaglContext, options: options)
     self.setupThumbnails()
   }
-  
   
   
   func setupThumbnails() {
@@ -172,12 +172,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let collectionViewConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView]-(-120)-|", options: nil, metrics: nil, views: views)
     rootView.addConstraints(collectionViewConstraintVertical)
     self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint
-   
 
   }
   
   
-
-
+  
 }
 

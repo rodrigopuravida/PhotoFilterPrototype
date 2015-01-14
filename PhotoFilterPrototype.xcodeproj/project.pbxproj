@@ -38,24 +38,24 @@
 /* Begin PBXFileReference section */
 		482F738D1A647775002A8537 /* PhotoFilterPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilterPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73911A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		482F73941A647775002A8537 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoFilterPrototype/AppDelegate.swift; sourceTree = "<group>"; };
+		482F73941A647775002A8537 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = PhotoFilterPrototype/ViewController.swift; sourceTree = "<group>"; };
 		482F73991A647775002A8537 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		482F739C1A647775002A8537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		482F73A21A647775002A8537 /* PhotoFilterPrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhotoFilterPrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73A71A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73A81A647775002A8537 /* PhotoFilterPrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFilterPrototypeTests.swift; sourceTree = "<group>"; };
 		482F73B21A647876002A8537 /* Tasks */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Tasks; path = PhotoFilterPrototype/Tasks; sourceTree = "<group>"; };
-		482F73B41A647E36002A8537 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		482F73B61A648119002A8537 /* IntroImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IntroImage.jpeg; sourceTree = "<group>"; };
-		482F73B71A648119002A8537 /* photo6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo6.jpeg; sourceTree = "<group>"; };
-		482F73B81A648119002A8537 /* photo5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo5.jpeg; sourceTree = "<group>"; };
-		482F73B91A648119002A8537 /* photo4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo4.jpeg; sourceTree = "<group>"; };
-		482F73BA1A648119002A8537 /* photo3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo3.jpeg; sourceTree = "<group>"; };
-		482F73BB1A648119002A8537 /* photo2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo2.jpeg; sourceTree = "<group>"; };
-		482F73BC1A648119002A8537 /* photo1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo1.jpeg; sourceTree = "<group>"; };
-		482F73C41A648693002A8537 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
-		4898E21F1A65E31400A4262D /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		482F73B41A647E36002A8537 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryViewController.swift; path = PhotoFilterPrototype/GalleryViewController.swift; sourceTree = "<group>"; };
+		482F73B61A648119002A8537 /* IntroImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = IntroImage.jpeg; path = PhotoFilterPrototype/IntroImage.jpeg; sourceTree = "<group>"; };
+		482F73B71A648119002A8537 /* photo6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo6.jpeg; path = PhotoFilterPrototype/photo6.jpeg; sourceTree = "<group>"; };
+		482F73B81A648119002A8537 /* photo5.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo5.jpeg; path = PhotoFilterPrototype/photo5.jpeg; sourceTree = "<group>"; };
+		482F73B91A648119002A8537 /* photo4.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo4.jpeg; path = PhotoFilterPrototype/photo4.jpeg; sourceTree = "<group>"; };
+		482F73BA1A648119002A8537 /* photo3.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo3.jpeg; path = PhotoFilterPrototype/photo3.jpeg; sourceTree = "<group>"; };
+		482F73BB1A648119002A8537 /* photo2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo2.jpeg; path = PhotoFilterPrototype/photo2.jpeg; sourceTree = "<group>"; };
+		482F73BC1A648119002A8537 /* photo1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo1.jpeg; path = PhotoFilterPrototype/photo1.jpeg; sourceTree = "<group>"; };
+		482F73C41A648693002A8537 /* GalleryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GalleryCell.swift; path = PhotoFilterPrototype/GalleryCell.swift; sourceTree = "<group>"; };
+		4898E21F1A65E31400A4262D /* Thumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Thumbnail.swift; path = PhotoFilterPrototype/Thumbnail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +79,9 @@
 		482F73841A647775002A8537 = {
 			isa = PBXGroup;
 			children = (
+				4898E2231A65FEAD00A4262D /* Models */,
+				4898E2221A65FE9E00A4262D /* Controllers */,
+				4898E2211A65FE9100A4262D /* Views */,
 				482F73B21A647876002A8537 /* Tasks */,
 				482F738F1A647775002A8537 /* PhotoFilterPrototype */,
 				482F73A51A647775002A8537 /* PhotoFilterPrototypeTests */,
@@ -98,18 +101,6 @@
 		482F738F1A647775002A8537 /* PhotoFilterPrototype */ = {
 			isa = PBXGroup;
 			children = (
-				482F73B61A648119002A8537 /* IntroImage.jpeg */,
-				482F73B71A648119002A8537 /* photo6.jpeg */,
-				482F73B81A648119002A8537 /* photo5.jpeg */,
-				482F73B91A648119002A8537 /* photo4.jpeg */,
-				482F73BA1A648119002A8537 /* photo3.jpeg */,
-				482F73BB1A648119002A8537 /* photo2.jpeg */,
-				482F73BC1A648119002A8537 /* photo1.jpeg */,
-				482F73921A647775002A8537 /* AppDelegate.swift */,
-				482F73941A647775002A8537 /* ViewController.swift */,
-				4898E21F1A65E31400A4262D /* Thumbnail.swift */,
-				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
-				482F73C41A648693002A8537 /* GalleryCell.swift */,
 				482F73991A647775002A8537 /* Images.xcassets */,
 				482F739B1A647775002A8537 /* LaunchScreen.xib */,
 				482F73901A647775002A8537 /* Supporting Files */,
@@ -140,6 +131,39 @@
 				482F73A71A647775002A8537 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4898E2211A65FE9100A4262D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				482F73B61A648119002A8537 /* IntroImage.jpeg */,
+				482F73B71A648119002A8537 /* photo6.jpeg */,
+				482F73B81A648119002A8537 /* photo5.jpeg */,
+				482F73B91A648119002A8537 /* photo4.jpeg */,
+				482F73BA1A648119002A8537 /* photo3.jpeg */,
+				482F73BB1A648119002A8537 /* photo2.jpeg */,
+				482F73BC1A648119002A8537 /* photo1.jpeg */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4898E2221A65FE9E00A4262D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				482F73921A647775002A8537 /* AppDelegate.swift */,
+				482F73941A647775002A8537 /* ViewController.swift */,
+				482F73C41A648693002A8537 /* GalleryCell.swift */,
+				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		4898E2231A65FEAD00A4262D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4898E21F1A65E31400A4262D /* Thumbnail.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
