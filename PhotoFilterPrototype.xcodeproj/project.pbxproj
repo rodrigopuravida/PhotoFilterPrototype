@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4800E6071A670C610091DF27 /* Homework in Resources */ = {isa = PBXBuildFile; fileRef = 4800E6061A670C610091DF27 /* Homework */; };
 		482F73931A647775002A8537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73921A647775002A8537 /* AppDelegate.swift */; };
 		482F73951A647775002A8537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73941A647775002A8537 /* ViewController.swift */; };
 		482F739A1A647775002A8537 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482F73991A647775002A8537 /* Images.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4800E6061A670C610091DF27 /* Homework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Homework; sourceTree = "<group>"; };
 		482F738D1A647775002A8537 /* PhotoFilterPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilterPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73911A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoFilterPrototype/AppDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		482F73841A647775002A8537 = {
 			isa = PBXGroup;
 			children = (
+				4800E6061A670C610091DF27 /* Homework */,
 				4898E2231A65FEAD00A4262D /* Models */,
 				4898E2221A65FE9E00A4262D /* Controllers */,
 				4898E2211A65FE9100A4262D /* Views */,
@@ -254,6 +257,7 @@
 				482F739D1A647775002A8537 /* LaunchScreen.xib in Resources */,
 				482F73C11A648119002A8537 /* photo3.jpeg in Resources */,
 				482F73BE1A648119002A8537 /* photo6.jpeg in Resources */,
+				4800E6071A670C610091DF27 /* Homework in Resources */,
 				482F73BD1A648119002A8537 /* IntroImage.jpeg in Resources */,
 				482F739A1A647775002A8537 /* Images.xcassets in Resources */,
 			);
