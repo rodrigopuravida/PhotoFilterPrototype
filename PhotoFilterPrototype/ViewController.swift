@@ -114,6 +114,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     UIGraphicsBeginImageContext(size)
     originalImage.drawInRect(CGRect(x: 0, y: 0, width: 100, height: 100))
     self.originalThumbnail = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
   }
   
   //MARK: UICollectionViewDataSource
