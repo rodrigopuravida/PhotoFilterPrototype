@@ -18,6 +18,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   let imageQueue = NSOperationQueue()
   var gpuContext : CIContext!
   var thumbnails = [Thumbnail]()
+  
+  //nav bar buttons
+  var doneButtonViewController : UIBarButtonItem!
+  var shareButtonViewController : UIBarButtonItem!
 
 
   override func loadView() {
@@ -44,7 +48,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let views = ["photoButton" : photoButton, "mainImageView" : self.mainImageView, "collectionView" : collectionView]
     
     self.setupConstraintsOnRootView(rootView, forViews: views)
-    //rootView.backgroundColor = UIColor(patternImage: UIImage(named: "IntroImage.jpeg")!)
+    
 
     self.view = rootView
   }
@@ -52,6 +56,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    //settign up buttons
+    self.doneButtonViewController = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePressed")
+    self.shareButtonViewController = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "sharePressed")
+    self.navigationItem.rightBarButtonItem = self.shareButtonViewController
     
     let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
@@ -71,6 +79,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
         
       })
     }
+    
+    self.navigationItem.rightBarButtonItem = doneButtonViewController
+
+    
     self.alertController.addAction(galleryOption)
     self.alertController.addAction(galleryOptionCancel)
     self.alertController.addAction(filterOption)
@@ -118,6 +130,27 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     originalImage.drawInRect(CGRect(x: 0, y: 0, width: 100, height: 100))
     self.originalThumbnail = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
+  }
+  
+  func donePressed() {
+    self.collectionViewYConstraint.constant = -120
+    UIView.animateWithDuration(0.4, animations: { () -> Void in
+      self.view.layoutIfNeeded()
+      
+    })
+    self.navigationItem.rightBarButtonItem = self.shareButtonViewController
+  }
+  
+  func sharePressed() {
+    println("SharedPressed")
+//    if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+//      let compViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+//      compViewController.addImage(self.mainImageView.image)
+//      self.presentViewController(compViewController, animated: true, completion: nil)
+//    } else {
+//      //tell user to sign into to twitter to use this feature
+//    }
+    
   }
   
   //MARK: UICollectionViewDataSource
