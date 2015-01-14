@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4800E6071A670C610091DF27 /* Homework in Resources */ = {isa = PBXBuildFile; fileRef = 4800E6061A670C610091DF27 /* Homework */; };
+		4800E6091A67183C0091DF27 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4800E6081A67183C0091DF27 /* PhotoViewController.swift */; };
 		482F73931A647775002A8537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73921A647775002A8537 /* AppDelegate.swift */; };
 		482F73951A647775002A8537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F73941A647775002A8537 /* ViewController.swift */; };
 		482F739A1A647775002A8537 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482F73991A647775002A8537 /* Images.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		4800E6061A670C610091DF27 /* Homework */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Homework; sourceTree = "<group>"; };
+		4800E6081A67183C0091DF27 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		482F738D1A647775002A8537 /* PhotoFilterPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilterPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73911A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoFilterPrototype/AppDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				482F73921A647775002A8537 /* AppDelegate.swift */,
+				4800E6081A67183C0091DF27 /* PhotoViewController.swift */,
 				482F73941A647775002A8537 /* ViewController.swift */,
 				482F73C41A648693002A8537 /* GalleryCell.swift */,
 				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
@@ -283,6 +286,7 @@
 				482F73951A647775002A8537 /* ViewController.swift in Sources */,
 				4898E2201A65E31400A4262D /* Thumbnail.swift in Sources */,
 				482F73931A647775002A8537 /* AppDelegate.swift in Sources */,
+				4800E6091A67183C0091DF27 /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
