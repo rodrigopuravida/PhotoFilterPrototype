@@ -67,7 +67,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let filterOption = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (action) -> Void in
       self.collectionViewYConstraint.constant = 20
       UIView.animateWithDuration(0.4, animations: { () -> Void in
-        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
         
       })
     }
@@ -78,6 +78,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let options = [kCIContextWorkingColorSpace : NSNull()] //makes faster
     let eaglContext = EAGLContext(API: EAGLRenderingAPI.OpenGLES2)
     self.gpuContext = CIContext(EAGLContext: eaglContext, options: options)
+    
     self.setupThumbnails()
   }
   
@@ -86,6 +87,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.filterNames = ["CISepiaTone","CIPhotoEffectChrome", "CIPhotoEffectNoir"]
     for name in self.filterNames {
       let thumbnail = Thumbnail(filterName: name, operationQueue: self.imageQueue, context: self.gpuContext)
+      //no images attached yet - only array of container thumbnails
       self.thumbnails.append(thumbnail)
     }
   }
@@ -99,6 +101,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     
     for thumbnail in self.thumbnails {
       thumbnail.originalImage = self.originalThumbnail
+      thumbnail.filteredImage = nil
     }
     self.collectionView.reloadData()
   }
@@ -126,6 +129,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FILTER_CELL", forIndexPath: indexPath) as GalleryCell
     let thumbnail = self.thumbnails[indexPath.row]
+    //only display if a thumbnaiil image exists
     if thumbnail.originalImage != nil {
       if thumbnail.filteredImage == nil {
         thumbnail.generateFilteredImage()
