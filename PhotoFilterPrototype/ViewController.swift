@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
@@ -92,6 +93,15 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       self.alertController.addAction(cameraOption)
     }
     
+    let photoOption = UIAlertAction(title: "Photos", style: .Default) { (action) -> Void in
+      let photosVC = PhotoViewController()
+      photosVC.destinationImageSize = self.mainImageView.frame.size
+      photosVC.delegate = self
+      self.navigationController?.pushViewController(photosVC, animated: true)
+    }
+    
+    self.alertController.addAction(photoOption)
+    
     self.navigationItem.rightBarButtonItem = doneButtonViewController
 
     
@@ -167,14 +177,13 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   }
   
   func sharePressed() {
-    println("SharedPressed")
-//    if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
-//      let compViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-//      compViewController.addImage(self.mainImageView.image)
-//      self.presentViewController(compViewController, animated: true, completion: nil)
-//    } else {
-//      //tell user to sign into to twitter to use this feature
-//    }
+    if SLComposeViewController.isAvailableForServiceType(SLServiceTypeTwitter) {
+      let compViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+      compViewController.addImage(self.mainImageView.image)
+      self.presentViewController(compViewController, animated: true, completion: nil)
+    } else {
+      println("Not able to connect to Twitter")
+    }
     
   }
   
