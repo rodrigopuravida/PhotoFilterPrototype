@@ -76,25 +76,34 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     
     let filterOption = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (action) -> Void in
       
+      //Animation code for filter - tip from John Vogel
+      let constraints = self.view.constraints() as [NSLayoutConstraint]
+      for code in constraints{
+        if code.identifier != nil {
+          switch code.identifier!{
+          case "filterVerticalConstraint":
+            code.constant = 10
+          case "imageViewBottomConstraint":
+            code.constant = 100
+          case "imageViewTopConstraint":
+            code.constant = 75
+          case "imageViewLeftConstraint":
+            code.constant = 25
+          case "imageViewRightConstraint":
+            code.constant = 25
+          default:
+            break
+          }
+        }
+      }
       
       
       self.collectionViewYConstraint.constant = 20
       UIView.animateWithDuration(0.4, animations: { () -> Void in
         self.view.layoutIfNeeded()
         
-        let arrayOfConstraints = self.view.constraints() as [NSLayoutConstraint]
-        for cons in arrayOfConstraints{
-          
-          
-          switch cons.identifier!  {
-          case "buttonVerticalConstraint":
-            cons.constant = 30
-          default:
-            break
-          }
-        }
-
         
+        //The fast and cheesy way - DONT USE
 //        //RESIZE HERE MAIN IMAGE VIEW
 //        let screenSize: CGRect = UIScreen.mainScreen().bounds
 //        let screenWidth = screenSize.width;
@@ -192,6 +201,27 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   }
   
   func donePressed() {
+    
+    let constraints = self.view.constraints() as [NSLayoutConstraint]
+    for code in constraints{
+      if code.identifier != nil {
+        switch code.identifier!{
+        case "filterVerticalConstraint":
+          code.constant = -120
+        case "imageViewBottomConstraint":
+          code.constant = 30
+        case "imageViewTopConstraint":
+          code.constant = 72
+        case "imageViewLeftConstraint":
+          code.constant = 0
+        case "imageViewRightConstraint":
+          code.constant = 0
+        default:
+          break
+        }
+      }
+    }
+
     self.collectionViewYConstraint.constant = -120
     UIView.animateWithDuration(0.4, animations: { () -> Void in
       self.view.layoutIfNeeded()
