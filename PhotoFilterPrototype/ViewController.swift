@@ -10,7 +10,11 @@ import UIKit
 import Social
 
 class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UICollectionViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
+  
+  
+  
+  
+  let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
   let mainImageView = UIImageView()
   var collectionView : UICollectionView!
   var collectionViewYConstraint : NSLayoutConstraint!
@@ -20,14 +24,15 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   var gpuContext : CIContext!
   var thumbnails = [Thumbnail]()
   var delegate : ImageSelectedProtocol!
+
   
   //let rootView : UIView!
   
   //nav bar buttons
   var doneButtonViewController : UIBarButtonItem!
   var shareButtonViewController : UIBarButtonItem!
-
-
+  
+  
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
@@ -37,7 +42,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let photoButton = UIButton()
     photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     rootView.addSubview(photoButton)
-    photoButton.setTitle("My Photos", forState: .Normal)
+    photoButton.setTitle(NSLocalizedString("My Pictures", comment: "To select pictures while pressing button"), forState: .Normal)
     photoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
     photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     let collectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -54,7 +59,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     
     self.setupConstraintsOnRootView(rootView, forViews: views)
     
-
+    
     self.view = rootView
   }
   
@@ -62,23 +67,23 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     super.viewDidLoad()
     
     //settign up buttons
-    self.doneButtonViewController = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: "donePressed")
+    self.doneButtonViewController = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done Title for button"), style: UIBarButtonItemStyle.Done, target: self, action: "donePressed")
     self.shareButtonViewController = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "sharePressed")
     self.navigationItem.rightBarButtonItem = self.shareButtonViewController
     
     //alert controller for Photo Gallery
-    let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
+    let galleryOption = UIAlertAction(title: NSLocalizedString("Photo Gallery", comment: "Photo Gallery"), style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
       let galleryVC = GalleryViewController()
       galleryVC.delegate = self
       self.navigationController?.pushViewController(galleryVC, animated: true)
     }
     
-    let galleryOptionCancel = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action) -> Void in
+    let galleryOptionCancel = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel operation"), style: UIAlertActionStyle.Cancel) { (action) -> Void in
       println("Cancel pressed")
     }
     
-    let filterOption = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (action) -> Void in
+    let filterOption = UIAlertAction(title: NSLocalizedString("Filter", comment: "Button text to apply filter"), style: UIAlertActionStyle.Default) { (action) -> Void in
       
       //Animation code for filter - tip from John Vogel
       let constraints = self.view.constraints() as [NSLayoutConstraint]
@@ -108,18 +113,18 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
         
         
         //The fast and cheesy way - DONT USE
-//        //RESIZE HERE MAIN IMAGE VIEW
-//        let screenSize: CGRect = UIScreen.mainScreen().bounds
-//        let screenWidth = screenSize.width;
-//        let screenHeight = screenSize.height;
-//        
-//        println("RESIZE IMAGE HERE")
-//        self.mainImageView.frame = CGRectMake(0, 0, 320, 480);
+        //        //RESIZE HERE MAIN IMAGE VIEW
+        //        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        //        let screenWidth = screenSize.width;
+        //        let screenHeight = screenSize.height;
+        //
+        //        println("RESIZE IMAGE HERE")
+        //        self.mainImageView.frame = CGRectMake(0, 0, 320, 480);
       })
     }
     
     if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-      let cameraOption = UIAlertAction(title: "Select Camera", style: .Default, handler: { (action) -> Void in
+      let cameraOption = UIAlertAction(title: NSLocalizedString("Select camera", comment: "Title for Select Camera option"), style: .Default, handler: { (action) -> Void in
         
         let imagePickerController = UIImagePickerController()
         imagePickerController.sourceType = UIImagePickerControllerSourceType.Camera
@@ -130,7 +135,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       self.alertController.addAction(cameraOption)
     }
     
-    let photoOption = UIAlertAction(title: "Photos", style: .Default) { (action) -> Void in
+    let photoOption = UIAlertAction(title: NSLocalizedString("Photos", comment: "Photos for Alert option"), style: .Default) { (action) -> Void in
       let photosVC = PhotoViewController()
       photosVC.destinationImageSize = self.mainImageView.frame.size
       photosVC.delegate = self
@@ -140,7 +145,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.alertController.addAction(photoOption)
     
     self.navigationItem.rightBarButtonItem = doneButtonViewController
-
+    
     
     self.alertController.addAction(galleryOption)
     self.alertController.addAction(galleryOptionCancel)
@@ -225,7 +230,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
         }
       }
     }
-
+    
     self.collectionViewYConstraint.constant = -120
     UIView.animateWithDuration(0.4, animations: { () -> Void in
       self.view.layoutIfNeeded()
@@ -267,7 +272,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   //dont forger self.delegate for this to fire in viewDidLoad
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let thumbnail = self.thumbnails[indexPath.row]
-       
+    
     //start filtering of main image view
     
     let startImage = CIImage(image: self.mainImageView.image)
@@ -281,7 +286,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   }
   
   
- 
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -295,7 +300,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-30-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(photoButtonConstraintVertical)
     let photoButton = views["photoButton"] as UIView!
-    let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0) 
+    let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
     rootView.addConstraint(photoButtonConstraintHorizontal)
     //adding to constraint array
     for constraint in photoButtonConstraintVertical as [NSLayoutConstraint]{
@@ -321,7 +326,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     for c in mainImageViewConstraintsHorizontal as [NSLayoutConstraint]{
       constraintsArray.append(c)
     }
-
+    
     let collectionViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(collectionViewConstraintsHorizontal)
     let collectionViewConstraintHeight = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView(100)]", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
@@ -333,17 +338,17 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     for c in collectionViewConstraintsHorizontal as [NSLayoutConstraint]{
       constraintsArray.append(c)
       
-    for c in collectionViewConstraintVertical as [NSLayoutConstraint]{
+      for c in collectionViewConstraintVertical as [NSLayoutConstraint]{
         constraintsArray.append(c)
       }
       
       //add constraints to main view
       rootView.addConstraints(constraintsArray)
-
+      
     }
     
     self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint!
-
+    
   }
   
   
