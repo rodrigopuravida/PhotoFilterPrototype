@@ -48,6 +48,7 @@
 		48136B321A68738600A97786 /* photo9.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo9.jpeg; sourceTree = "<group>"; };
 		48136B331A68738600A97786 /* photo8.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo8.jpeg; sourceTree = "<group>"; };
 		48136B341A68738600A97786 /* photo7.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo7.jpeg; sourceTree = "<group>"; };
+		48136B391A687F4600A97786 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		482F738D1A647775002A8537 /* PhotoFilterPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFilterPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		482F73911A647775002A8537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482F73921A647775002A8537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PhotoFilterPrototype/AppDelegate.swift; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				482F739C1A647775002A8537 /* Base */,
+				48136B391A687F4600A97786 /* es */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
