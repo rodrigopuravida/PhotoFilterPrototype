@@ -48,7 +48,6 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   }
   
   //MARK: UICollectionViewDataSource
-  
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.images.count
   }
@@ -65,9 +64,7 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     self.delegate?.controllerDidSelectImage(self.images[indexPath.row])
     self.navigationController?.popViewControllerAnimated(true)
-    
   }
-
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
@@ -75,14 +72,5 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   }
   
   
-  /*
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-  // Get the new view controller using segue.destinationViewController.
-  // Pass the selected object to the new view controller.
-  }
-  */
-  
+    
 }

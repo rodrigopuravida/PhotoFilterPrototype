@@ -9,7 +9,7 @@
 import UIKit
 import Social
 
-class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UICollectionViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   let alertController = UIAlertController(title: "Photo Gallery", message: "Choose a Photo", preferredStyle: UIAlertControllerStyle.ActionSheet)
   let mainImageView = UIImageView()
   var collectionView : UICollectionView!
@@ -19,6 +19,8 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   let imageQueue = NSOperationQueue()
   var gpuContext : CIContext!
   var thumbnails = [Thumbnail]()
+  var delegate : ImageSelectedProtocol!
+  
   //let rootView : UIView!
   
   //nav bar buttons
@@ -45,6 +47,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     rootView.addSubview(collectionView)
     collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
     collectionView.dataSource = self
+    collectionView.delegate = self
     collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "FILTER_CELL")
     
     let views = ["photoButton" : photoButton, "mainImageView" : self.mainImageView, "collectionView" : collectionView]
@@ -63,6 +66,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.shareButtonViewController = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "sharePressed")
     self.navigationItem.rightBarButtonItem = self.shareButtonViewController
     
+    //alert controller for Photo Gallery
     let galleryOption = UIAlertAction(title: "Photo Gallery", style: UIAlertActionStyle.Default) { (action) -> Void in
       println("gallery pressed")
       let galleryVC = GalleryViewController()
@@ -166,6 +170,8 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.mainImageView.image = image
     self.generateThumbnail(image)
     
+    //this fires as soon as I click on an Image
+    
     for thumbnail in self.thumbnails {
       thumbnail.originalImage = self.originalThumbnail
       thumbnail.filteredImage = nil
@@ -173,9 +179,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.collectionView.reloadData()
   }
   
-  
   //MARK: UIImagePickerController
-  
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     let image = info[UIImagePickerControllerEditedImage] as? UIImage
     self.controllerDidSelectImage(image!)
@@ -259,7 +263,25 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     
     return cell
   }
-
+  
+  //dont forger self.delegate for this to fire in viewDidLoad
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let thumbnail = self.thumbnails[indexPath.row]
+       
+    //start filtering of main image view
+    
+    let startImage = CIImage(image: self.mainImageView.image)
+    let filter = CIFilter(name: self.thumbnails[indexPath.row].filterName)
+    filter.setDefaults()
+    filter.setValue(startImage, forKey: kCIInputImageKey)
+    let result = filter.valueForKey(kCIOutputImageKey) as CIImage
+    let extent = result.extent()
+    let imageRef = self.gpuContext.createCGImage(result, fromRect: extent)
+    self.mainImageView.image = UIImage(CGImage: imageRef)
+  }
+  
+  
+ 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -284,6 +306,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     //constraints for the image view
     let mainImageViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[mainImageView]-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(mainImageViewConstraintsHorizontal)
+    //creating identifiers that will be referenced later on to add or decrease 'constants'
     mainImageViewConstraintsHorizontal[0].identifier = "imageViewLeftConstraint"
     mainImageViewConstraintsHorizontal[1].identifier = "imageViewRightConstraint"
     
@@ -316,8 +339,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       
       //add constraints to main view
       rootView.addConstraints(constraintsArray)
-      
-      
+
     }
     
     self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint!

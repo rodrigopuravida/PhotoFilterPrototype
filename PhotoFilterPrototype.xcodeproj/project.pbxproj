@@ -157,8 +157,8 @@
 			children = (
 				482F73921A647775002A8537 /* AppDelegate.swift */,
 				4800E6081A67183C0091DF27 /* PhotoViewController.swift */,
-				482F73941A647775002A8537 /* ViewController.swift */,
 				482F73C41A648693002A8537 /* GalleryCell.swift */,
+				482F73941A647775002A8537 /* ViewController.swift */,
 				482F73B41A647E36002A8537 /* GalleryViewController.swift */,
 			);
 			name = Controllers;

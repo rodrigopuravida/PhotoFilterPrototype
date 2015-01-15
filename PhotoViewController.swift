@@ -10,6 +10,7 @@ import Photos
 
 class PhotoViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
   
+  //TODO: Add Done button on top
   
   var assetsFetchResults : PHFetchResult!
   var assetCollection : PHAssetCollection!
@@ -24,12 +25,10 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
   
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
-    //    let flowlayout = UICollectionViewFlowLayout()
     self.collectionView = UICollectionView(frame: rootView.bounds, collectionViewLayout: UICollectionViewFlowLayout())
     
     let flowLayout = collectionView.collectionViewLayout as UICollectionViewFlowLayout
     flowLayout.itemSize = CGSize(width: 100, height: 100)
-    
     
     rootView.addSubview(collectionView)
     collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
