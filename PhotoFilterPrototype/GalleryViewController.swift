@@ -16,13 +16,15 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   
   var collectionView : UICollectionView!
   var images = [UIImage]()
-  var delegate : ImageSelectedProtocol!
+  var delegate : ImageSelectedProtocol?
   var photoPic = String()
+  var collectionViewFlowLayout : UICollectionViewFlowLayout!
  
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
-    let collectionViewFlowLayout = UICollectionViewFlowLayout()
+    self.collectionViewFlowLayout = UICollectionViewFlowLayout()
     self.collectionView = UICollectionView(frame: rootView.frame, collectionViewLayout: collectionViewFlowLayout)
+    
     rootView.addSubview(self.collectionView)
     self.collectionView.dataSource = self
     self.collectionView.delegate = self
@@ -37,13 +39,50 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     self.collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "GALLERY_CELL")
     
     //iterating over range of pictures
-    for var i = 1; i <= 6; i++ {
+    for var i = 1; i <= 10; i++ {
       
       self.photoPic = "photo\(i).jpeg"
 
       self.images.append(UIImage(named: photoPic)!)
-      
     }
+    let pinchRecognizer = UIPinchGestureRecognizer(target: self, action: "myCollectionViewPinched:")
+    self.collectionView.addGestureRecognizer(pinchRecognizer)
+    
+  }
+  
+  //MARK: Gesture recognizers
+  func myCollectionViewPinched(sender: UIPinchGestureRecognizer) {
+    
+    switch sender.state {
+    case .Began:
+      println("Pimching started")
+    case .Changed:
+      println("Pinching changed")
+    case .Ended:
+      println("Pimching ended")
+      self.collectionView.performBatchUpdates({ () -> Void in
+        println(sender.velocity)
+        if sender.velocity > 0 {
+          //make it bigger
+          let newSize = CGSize(width: self.collectionViewFlowLayout.itemSize.width * 2, height: self.collectionViewFlowLayout.itemSize.height * 2)
+          self.collectionViewFlowLayout.itemSize = newSize
+        }
+        else if sender.velocity < 0 {
+          //make it smaller
+          let newSize = CGSize(width: self.collectionViewFlowLayout.itemSize.width
+            * 0.5, height: self.collectionViewFlowLayout.itemSize.height * 0.5)
+          self.collectionViewFlowLayout.itemSize = newSize
+          
+        }
+      }, completion: { (finished) -> Void in
+        println("Did I finish")
+      })
+      
+    default:
+      println("Default case")
+    }
+ 
+    println("Images have been pinched")
     
   }
   
@@ -70,7 +109,5 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
-  
-    
+ 
 }
