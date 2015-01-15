@@ -19,6 +19,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   let imageQueue = NSOperationQueue()
   var gpuContext : CIContext!
   var thumbnails = [Thumbnail]()
+  //let rootView : UIView!
   
   //nav bar buttons
   var doneButtonViewController : UIBarButtonItem!
@@ -74,10 +75,33 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     }
     
     let filterOption = UIAlertAction(title: "Filter", style: UIAlertActionStyle.Default) { (action) -> Void in
+      
+      
+      
       self.collectionViewYConstraint.constant = 20
       UIView.animateWithDuration(0.4, animations: { () -> Void in
         self.view.layoutIfNeeded()
         
+        let arrayOfConstraints = self.view.constraints() as [NSLayoutConstraint]
+        for cons in arrayOfConstraints{
+          
+          
+          switch cons.identifier!  {
+          case "buttonVerticalConstraint":
+            cons.constant = 30
+          default:
+            break
+          }
+        }
+
+        
+//        //RESIZE HERE MAIN IMAGE VIEW
+//        let screenSize: CGRect = UIScreen.mainScreen().bounds
+//        let screenWidth = screenSize.width;
+//        let screenHeight = screenSize.height;
+//        
+//        println("RESIZE IMAGE HERE")
+//        self.mainImageView.frame = CGRectMake(0, 0, 320, 480);
       })
     }
     
@@ -202,48 +226,71 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
         thumbnail.generateFilteredImage()
         cell.imageView.image = thumbnail.filteredImage!
       } }
-    //cell.imageView.image = self.originalThumbnail
+    
     return cell
   }
-
-
-  
-  
-  //MARK: Image selected delegate
-//  func controllerDidSelectImage(image: UIImage) {
-//    println("Image selected")
-//    self.mainImageView.image = image
-//    self.collectionView.reloadData()
-//  
-//  }
-  
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
   
-  //MARK: Autolayout Constraints
+  //MARK: Autolayout Constraints - tip courtesy from John Vogel
+  
   func setupConstraintsOnRootView(rootView : UIView, forViews views : [String : AnyObject]) {
-    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-30-|", options: nil, metrics: nil, views: views)
+    
+    var constraintsArray = [NSLayoutConstraint]()
+    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-30-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(photoButtonConstraintVertical)
     let photoButton = views["photoButton"] as UIView!
-    let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
+    let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0) 
     rootView.addConstraint(photoButtonConstraintHorizontal)
+    //adding to constraint array
+    for constraint in photoButtonConstraintVertical as [NSLayoutConstraint]{
+      constraintsArray.append(constraint)
+    }
+    constraintsArray.append(photoButtonConstraintHorizontal)
     
-    let mainImageViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[mainImageView]-|", options: nil, metrics: nil, views: views)
+    //constraints for the image view
+    let mainImageViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[mainImageView]-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(mainImageViewConstraintsHorizontal)
-    let mainImageViewConstraintsVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:|-72-[mainImageView]-30-[photoButton]", options: nil, metrics: nil, views: views)
-    rootView.addConstraints(mainImageViewConstraintsVertical)
-
+    mainImageViewConstraintsHorizontal[0].identifier = "imageViewLeftConstraint"
+    mainImageViewConstraintsHorizontal[1].identifier = "imageViewRightConstraint"
     
-    let collectionViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: nil, metrics: nil, views: views)
+    let mainImageViewConstraintsVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:|-72-[mainImageView]-30-[photoButton]", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
+    rootView.addConstraints(mainImageViewConstraintsVertical)
+    mainImageViewConstraintsVertical[0].identifier = "imageViewTopConstraint"
+    mainImageViewConstraintsVertical[1].identifier = "imageViewBottomConstraint"
+    
+    for c in mainImageViewConstraintsVertical as [NSLayoutConstraint]{
+      constraintsArray.append(c)
+    }
+    for c in mainImageViewConstraintsHorizontal as [NSLayoutConstraint]{
+      constraintsArray.append(c)
+    }
+
+    let collectionViewConstraintsHorizontal = NSLayoutConstraint.constraintsWithVisualFormat("H:|[collectionView]|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(collectionViewConstraintsHorizontal)
-    let collectionViewConstraintHeight = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView(100)]", options: nil, metrics: nil, views: views)
+    let collectionViewConstraintHeight = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView(100)]", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     self.collectionView.addConstraints(collectionViewConstraintHeight)
-    let collectionViewConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView]-(-120)-|", options: nil, metrics: nil, views: views)
+    let collectionViewConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[collectionView]-(-120)-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
+    collectionViewConstraintVertical[0].identifier = "filterVerticalConstraint"
     rootView.addConstraints(collectionViewConstraintVertical)
-    self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint
+    
+    for c in collectionViewConstraintsHorizontal as [NSLayoutConstraint]{
+      constraintsArray.append(c)
+      
+    for c in collectionViewConstraintVertical as [NSLayoutConstraint]{
+        constraintsArray.append(c)
+      }
+      
+      //add constraints to main view
+      rootView.addConstraints(constraintsArray)
+      
+      
+    }
+    
+    self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint!
 
   }
   
