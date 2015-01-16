@@ -8,6 +8,7 @@
 
 import UIKit
 
+//This is my protocol.  View controlled signed for it so he needs to implement it
 protocol ImageSelectedProtocol {
   func controllerDidSelectImage(UIImage) -> Void
 }
@@ -16,6 +17,8 @@ class GalleryViewController: UIViewController, UICollectionViewDataSource, UICol
   
   var collectionView : UICollectionView!
   var images = [UIImage]()
+  //this is the variable used in View Controller as gallerVC.delegate = self
+  //View controller is the delegate for the controllerDidSelectImage function
   var delegate : ImageSelectedProtocol?
   var photoPic = String()
   var collectionViewFlowLayout : UICollectionViewFlowLayout!

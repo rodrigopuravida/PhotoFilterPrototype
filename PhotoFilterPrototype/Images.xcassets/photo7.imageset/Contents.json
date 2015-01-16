@@ -7,11 +7,12 @@
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "photo3-2X.jpg"
+      "filename" : "photo7-2X.jpg"
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
+      "scale" : "3x",
+      "filename" : "photo7.jpeg"
     }
   ],
   "info" : {

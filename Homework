@@ -24,3 +24,12 @@ Get caught up with everything from the prior assignments
 Add the pinch gesture recognizer to your gallery view controller, and change the item size when the pinching takes place
 Add a 2nd language to your app and correctly translate your user facing strings
 Using the assets catalogue, add 2x and 3x version of your gallery images to your app
+
+
+
+//Extra for me
+1. Clean up code
+2. Refactor filter function - add helper class
+3. fix the Done Button
+4. Add more comments
+5. set launnching image
