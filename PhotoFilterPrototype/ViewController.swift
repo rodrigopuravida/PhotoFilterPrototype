@@ -23,7 +23,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   var thumbnails = [Thumbnail]()
   var delegate : ImageSelectedProtocol!
   var originalImage : UIImage?
-  let tap = UITapGestureRecognizer()
+  var tap = UITapGestureRecognizer()
   var numberOfTapsRequired =  2
   //let rootView : UIView!
   
@@ -357,11 +357,34 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
 
     
     println("I have double tapped")
-    
-    
+    //controllerDidSelectImage(mainImageView.image!)
+    //WE are redoing what we did when needed to resize image for image filter showing
+    //TODO: Refactor this conde into Helper Class
+    let constraints = self.view.constraints() as [NSLayoutConstraint]
+    for code in constraints{
+      if code.identifier != nil {
+        switch code.identifier!{
+        case "filterVerticalConstraint":
+          code.constant = 10
+        case "imageViewBottomConstraint":
+          code.constant = 100
+        case "imageViewTopConstraint":
+          code.constant = 75
+        case "imageViewLeftConstraint":
+          code.constant = 25
+        case "imageViewRightConstraint":
+          code.constant = 25
+        default:
+          break
+        }
+      }
+    }
+    self.collectionViewYConstraint.constant = 20
+    UIView.animateWithDuration(0.4, animations: { () -> Void in
+      self.view.layoutIfNeeded()
+    })
+
   }
-  
-  
-  
+
 }
 
