@@ -13,7 +13,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
     
   let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
-  let mainImageView = UIImageView()
+  let mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
   var collectionView : UICollectionView!
   var collectionViewYConstraint : NSLayoutConstraint!
   var originalThumbnail : UIImage!
@@ -23,8 +23,6 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   var thumbnails = [Thumbnail]()
   var delegate : ImageSelectedProtocol!
   var originalImage : UIImage?
-
-  
   //let rootView : UIView!
   
   //nav bar buttons
@@ -34,10 +32,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
-    rootView.addSubview(self.mainImageView)
     self.mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
     self.mainImageView.backgroundColor = UIColor.yellowColor()
-    self.mainImageView.image = UIImage(named: "photo1.jpeg")
+    //self.mainImageView.image = UIImage(named: "photo1.jpeg")
+    rootView.addSubview(self.mainImageView)
     //self.mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
     //self.mainImageView.clipsToBounds = true
     let photoButton = UIButton()
@@ -48,19 +46,17 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     photoButton.addTarget(self, action: "photoButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
     let collectionViewFlowLayout = UICollectionViewFlowLayout()
     self.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: collectionViewFlowLayout)
-    collectionViewFlowLayout.itemSize = CGSize(width: 100, height: 100)
+    collectionViewFlowLayout.itemSize = CGSize(width: 50, height: 50)
     collectionViewFlowLayout.scrollDirection = .Horizontal
     rootView.addSubview(collectionView)
-    collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
-    collectionView.dataSource = self
-    collectionView.delegate = self
-    collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "FILTER_CELL")
-    
+    self.collectionView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    self.collectionView.dataSource = self
+    self.collectionView.delegate = self
+    self.collectionView.registerClass(GalleryCell.self, forCellWithReuseIdentifier: "FILTER_CELL")
+    //views dictionary
     let views = ["photoButton" : photoButton, "mainImageView" : self.mainImageView, "collectionView" : collectionView]
-    
+    //addconstraints
     self.setupConstraintsOnRootView(rootView, forViews: views)
-    
-    
     self.view = rootView
   }
   
@@ -226,12 +222,13 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       }
     }
     
-    self.collectionViewYConstraint.constant = -120
+    //self.collectionViewYConstraint.constant = -120
     UIView.animateWithDuration(0.4, animations: { () -> Void in
       self.view.layoutIfNeeded()
       
     })
     self.navigationItem.rightBarButtonItem = self.shareButtonViewController
+    self.navigationItem.leftBarButtonItem = nil
   }
   
   func sharePressed() {
@@ -279,13 +276,9 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let imageRef = self.gpuContext.createCGImage(result, fromRect: extent)
     self.mainImageView.image = UIImage(CGImage: imageRef)
     
-    
-    
   }
   
-  
-  
-  override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
@@ -315,7 +308,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     //creating identifiers that will be referenced later on to add or decrease 'constants'
     mainImageViewConstraintsHorizontal[0].identifier = "imageViewLeftConstraint"
     mainImageViewConstraintsHorizontal[1].identifier = "imageViewRightConstraint"
-    let mainImageViewConstraintsVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:|-72-[mainImageView]-30-[photoButton]", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
+    let mainImageViewConstraintsVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:|-65-[mainImageView]-10-[photoButton]", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(mainImageViewConstraintsVertical)
     mainImageViewConstraintsVertical[0].identifier = "imageViewTopConstraint"
     mainImageViewConstraintsVertical[1].identifier = "imageViewBottomConstraint"
