@@ -21,9 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let rootVC = ViewController()
     //setup our nav controller
     let navController = UINavigationController(rootViewController: rootVC)
+    println("I'm at AppDelegate")
     
     self.window?.rootViewController = navController
-    
+    self.window?.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
+        
     
     return true
   }

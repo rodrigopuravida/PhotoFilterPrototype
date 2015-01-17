@@ -13,7 +13,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
     
   let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
-  var mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
+  let mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
   var collectionView : UICollectionView!
   var collectionViewYConstraint : NSLayoutConstraint!
   var originalThumbnail : UIImage!
@@ -38,10 +38,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     mainImageView.backgroundColor = UIColor.whiteColor()
     //TODO: INVESTIGATE: WHy setting up an image here hoses everything???
     //mainImageView.image = UIImage(named: "Filter.jpg")
-    mainImageView.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
+    //mainImageView.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
     rootView.addSubview(mainImageView)
-    //self.mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
-    //self.mainImageView.clipsToBounds = true
+    mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    mainImageView.clipsToBounds = true
     let photoButton = UIButton()
     photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     rootView.addSubview(photoButton)
@@ -107,14 +107,6 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       UIView.animateWithDuration(0.4, animations: { () -> Void in
         self.view.layoutIfNeeded()
         
-        //The fast and cheesy way - DONT USE
-        //        //RESIZE HERE MAIN IMAGE VIEW
-        //        let screenSize: CGRect = UIScreen.mainScreen().bounds
-        //        let screenWidth = screenSize.width;
-        //        let screenHeight = screenSize.height;
-        //
-        //        println("RESIZE IMAGE HERE")
-        //        self.mainImageView.frame = CGRectMake(0, 0, 320, 480);
       })
     }
     
@@ -354,8 +346,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
   //MARK: Double tap function recognizer for main Image View
   func tappedImage() {
-
-    
+ 
     println("I have double tapped")
     //controllerDidSelectImage(mainImageView.image!)
     //WE are redoing what we did when needed to resize image for image filter showing
