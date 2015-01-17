@@ -13,7 +13,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
     
   let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
-  let mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
+  var mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
   var collectionView : UICollectionView!
   var collectionViewYConstraint : NSLayoutConstraint!
   var originalThumbnail : UIImage!
@@ -32,10 +32,12 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
-    self.mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-    self.mainImageView.backgroundColor = UIColor.yellowColor()
-    //self.mainImageView.image = UIImage(named: "photo1.jpeg")
-    rootView.addSubview(self.mainImageView)
+    mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+    mainImageView.backgroundColor = UIColor.whiteColor()
+    //TODO: INVESTIGATE: WHy setting up an image here hoses everything???
+    //mainImageView.image = UIImage(named: "Filter.jpg")
+    mainImageView.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
+    rootView.addSubview(mainImageView)
     //self.mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
     //self.mainImageView.clipsToBounds = true
     let photoButton = UIButton()
@@ -338,8 +340,13 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       //add constraints to main view
       rootView.addConstraints(constraintsArray)
     }
-    
     self.collectionViewYConstraint = collectionViewConstraintVertical.first as NSLayoutConstraint!
+  }
+  
+  //MARK: Double tap function recognizer for main Image View
+  func myCollectionViewPinched(sender: UITapGestureRecognizer) {
+    
+    println("I have double tapped")
     
   }
   
