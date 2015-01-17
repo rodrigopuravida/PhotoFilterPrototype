@@ -23,6 +23,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   var thumbnails = [Thumbnail]()
   var delegate : ImageSelectedProtocol!
   var originalImage : UIImage?
+  let tap = UITapGestureRecognizer()
   //let rootView : UIView!
   
   //nav bar buttons
@@ -157,6 +158,14 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
       //no images attached yet - only array of container thumbnails
       self.thumbnails.append(thumbnail)
     }
+    
+    //setting up doble tap
+    tap.addTarget(self, action: "imageTapped")
+    mainImageView.userInteractionEnabled = true
+    mainImageView.addGestureRecognizer(tap)
+
+    
+    
   }
   
   
@@ -346,7 +355,11 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   //MARK: Double tap function recognizer for main Image View
   func myCollectionViewPinched(sender: UITapGestureRecognizer) {
     
+    
+    
+    
     println("I have double tapped")
+    
     
   }
   
