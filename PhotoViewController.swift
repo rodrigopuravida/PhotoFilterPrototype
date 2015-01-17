@@ -65,7 +65,7 @@ class PhotoViewController: UIViewController, UICollectionViewDataSource, UIColle
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     //request image for correct size
     let selectedAsset = self.assetsFetchResults[indexPath.row] as PHAsset
-    self.imageManager.requestImageForAsset(selectedAsset, targetSize: self.destinationImageSize, contentMode: PHImageContentMode.AspectFill, options: nil) { (requestedImage, info) -> Void in
+    self.imageManager.requestImageForAsset(selectedAsset, targetSize: self.destinationImageSize, contentMode: PHImageContentMode.AspectFit, options: nil) { (requestedImage, info) -> Void in
       println() // this is purely for the xcode one line closure bug as per Brad
       self.delegate?.controllerDidSelectImage(requestedImage)
       self.navigationController?.popToRootViewControllerAnimated(true)

@@ -36,7 +36,9 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     rootView.addSubview(self.mainImageView)
     self.mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
     self.mainImageView.backgroundColor = UIColor.yellowColor()
-    self.mainImageView.image = UIImage(named: "introImage.jpeg")
+    self.mainImageView.image = UIImage(named: "photo1.jpeg")
+    //self.mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
+    //self.mainImageView.clipsToBounds = true
     let photoButton = UIButton()
     photoButton.setTranslatesAutoresizingMaskIntoConstraints(false)
     rootView.addSubview(photoButton)
@@ -186,6 +188,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
   func photoButtonPressed(sender : UIButton) {
     self.presentViewController(self.alertController, animated: true, completion: nil)
+    println("Pressed button")
   }
   
   func generateThumbnail(originalImage: UIImage) {
@@ -284,11 +287,13 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   func setupConstraintsOnRootView(rootView : UIView, forViews views : [String : AnyObject]) {
     
     var constraintsArray = [NSLayoutConstraint]()
-    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-30-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
+    let photoButtonConstraintVertical = NSLayoutConstraint.constraintsWithVisualFormat("V:[photoButton]-20-|", options: nil, metrics: nil, views: views) as [NSLayoutConstraint]
     rootView.addConstraints(photoButtonConstraintVertical)
     let photoButton = views["photoButton"] as UIView!
     let photoButtonConstraintHorizontal = NSLayoutConstraint(item: photoButton, attribute: .CenterX, relatedBy: NSLayoutRelation.Equal, toItem: rootView, attribute: NSLayoutAttribute.CenterX, multiplier: 1.0, constant: 0.0)
     rootView.addConstraint(photoButtonConstraintHorizontal)
+    photoButton.setContentHuggingPriority(750, forAxis: UILayoutConstraintAxis.Vertical)
+
     
     //adding to constraint array
     for constraint in photoButtonConstraintVertical as [NSLayoutConstraint]{
