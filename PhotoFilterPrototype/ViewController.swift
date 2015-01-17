@@ -22,6 +22,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   var gpuContext : CIContext!
   var thumbnails = [Thumbnail]()
   var delegate : ImageSelectedProtocol!
+  var originalImage : UIImage?
 
   
   //let rootView : UIView!
@@ -146,6 +147,10 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.setupThumbnails()
   }
   
+  override func viewDidAppear(animated: Bool) {
+    self.originalImage = self.mainImageView.image?
+  }
+  
   
   func setupThumbnails() {
     self.filterNames = ["CISepiaTone","CIPhotoEffectChrome", "CIPhotoEffectNoir"]
@@ -265,7 +270,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     
     //start filtering of main image view
     
-    let startImage = CIImage(image: self.mainImageView.image)
+    let startImage = CIImage(image: self.originalImage!)
     let filter = CIFilter(name: self.thumbnails[indexPath.row].filterName)
     filter.setDefaults()
     filter.setValue(startImage, forKey: kCIInputImageKey)
@@ -273,6 +278,9 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     let extent = result.extent()
     let imageRef = self.gpuContext.createCGImage(result, fromRect: extent)
     self.mainImageView.image = UIImage(CGImage: imageRef)
+    
+    
+    
   }
   
   
