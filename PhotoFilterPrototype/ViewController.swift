@@ -13,7 +13,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
     
   let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
-  let mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
+  var mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
   var collectionView : UICollectionView!
   var collectionViewYConstraint : NSLayoutConstraint!
   var originalThumbnail : UIImage!
@@ -30,15 +30,16 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   //nav bar buttons
   var doneButtonViewController : UIBarButtonItem!
   var shareButtonViewController : UIBarButtonItem!
+  var cancelTopLeftButton : UIBarButtonItem!
     
   override func loadView() {
     let rootView = UIView(frame: UIScreen.mainScreen().bounds)
     rootView.backgroundColor = UIColor.whiteColor()
     mainImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
     mainImageView.backgroundColor = UIColor.whiteColor()
-    //TODO: INVESTIGATE: WHy setting up an image here hoses everything???
+    //TODO: INVESTIGATE: WHy setting up an image here hoses everything and wjhy can't be set in appdelegate
     //mainImageView.image = UIImage(named: "Filter.jpg")
-    //mainImageView.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
+    self.mainImageView.backgroundColor = UIColor(patternImage: UIImage(named: "Filter.jpg")!)
     rootView.addSubview(mainImageView)
     mainImageView.contentMode = UIViewContentMode.ScaleAspectFill
     mainImageView.clipsToBounds = true
@@ -68,6 +69,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     super.viewDidLoad()
     //settign up buttons
     self.doneButtonViewController = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done Title for button"), style: UIBarButtonItemStyle.Done, target: self, action: "donePressed")
+    self.cancelTopLeftButton = UIBarButtonItem(title: NSLocalizedString("Cancel", comment: "Cancel button"), style: UIBarButtonItemStyle.Done, target: self, action: "cancelPressed")
     self.shareButtonViewController = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "sharePressed")
     self.navigationItem.rightBarButtonItem = self.shareButtonViewController
     //alert controller for Photo Gallery
@@ -83,6 +85,9 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     }    
     let filterOption = UIAlertAction(title: NSLocalizedString("Filter", comment: "Button text to apply filter"), style: UIAlertActionStyle.Default) { (action) -> Void in
       
+      //ading cancel button
+      self.navigationItem.leftBarButtonItem = self.cancelTopLeftButton
+ 
       //Animation code for filter - tip from John Vogel
       let constraints = self.view.constraints() as [NSLayoutConstraint]
       for code in constraints{
@@ -201,6 +206,11 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     originalImage.drawInRect(CGRect(x: 0, y: 0, width: 100, height: 100))
     self.originalThumbnail = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
+  }
+  
+  func cancelPressed() {
+    println("Cancel pressed")
+    self.donePressed()
   }
   
   func donePressed() {
@@ -346,9 +356,12 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
   
   //MARK: Double tap function recognizer for main Image View
   func tappedImage() {
- 
+    
+    //ading cancel button
+    self.navigationItem.leftBarButtonItem = self.cancelTopLeftButton
+
     println("I have double tapped")
-    //controllerDidSelectImage(mainImageView.image!)
+    
     //WE are redoing what we did when needed to resize image for image filter showing
     //TODO: Refactor this conde into Helper Class
     let constraints = self.view.constraints() as [NSLayoutConstraint]
