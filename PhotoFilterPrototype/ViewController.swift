@@ -10,7 +10,6 @@ import UIKit
 import Social
 
 class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionViewDataSource, UICollectionViewDelegate ,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-  
     
   let alertController = UIAlertController(title: NSLocalizedString("Photo Collection", comment: "Title for AlertController"), message: NSLocalizedString("Please Select", comment: "For selection of picture or photo"), preferredStyle: UIAlertControllerStyle.ActionSheet)
   var mainImageView = UIImageView(frame: UIScreen.mainScreen().bounds)
@@ -148,7 +147,6 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     self.originalImage = self.mainImageView.image?
   }
   
-  
   func setupThumbnails() {
     self.filterNames = ["CISepiaTone","CIPhotoEffectChrome", "CIPhotoEffectNoir"]
     for name in self.filterNames {
@@ -162,9 +160,7 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     tap.numberOfTapsRequired = self.numberOfTapsRequired
     mainImageView.userInteractionEnabled = true
     mainImageView.addGestureRecognizer(tap)
-
   }
-  
   
   //MARK: ImageSelectedDelegate
   //We are here from Gallery View Controller as View Controller is the delegate for this function
@@ -172,7 +168,6 @@ class ViewController: UIViewController, ImageSelectedProtocol,  UICollectionView
     println("image selected")
     self.mainImageView.image = image
     self.generateThumbnail(image)
-    
     //this fires as soon as I click on an Image
     
     for thumbnail in self.thumbnails {
